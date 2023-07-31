@@ -1,0 +1,8 @@
+{% for device_info in devices %}
+设备ID: {{ device_info.get("id") }}
+国标编号: {{ device_info.get("device_id") }}
+国标域: {{ device_info.get("device_domain") }}
+通讯协议: SIP-OVER-{{ "UDP" if device_info.get("socket_type") == 1 else "TCP"}}
+设备名称: {{ device_info.get("device_name") }}
+设备状态: 在线
+{% endfor %}
