@@ -12,8 +12,8 @@ site = Site(resource)
 
 # 启动Twisted Web服务
 reactor.listenTCP(8080, site)
-# reactor.listenUDP(5060, socket_app)
-# reactor.listenTCP(5060, socket_app)
+reactor.listenUDP(5060, socket_app)
+reactor.listenTCP(5060, socket_app)
 
 # 启动Twisted事件循环
 reactor.run()

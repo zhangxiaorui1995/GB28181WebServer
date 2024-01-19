@@ -76,12 +76,14 @@ class RegisterEvent:
         device_sip_port: int,
         device_branch: str,
         platform_gb_domain: str,
-        platform_nonce: str = generate_nonce(),
+        platform_nonce: str = None,
         sip_schema: str = "UDP",
     ):
         """
         :param sip_uri: SIP设备编码@源域名
         """
+        if not platform_nonce:
+            platform_nonce = RegisterEvent.generate_nonce()
         unauthorized_str = "SIP/2.0 401 Unauthorized\n"
         unauthorized_str += f"CSeq: {cseq}\n"
         unauthorized_str += f"Call-ID: {call_id}\n"
